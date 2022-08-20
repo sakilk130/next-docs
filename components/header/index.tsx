@@ -27,14 +27,15 @@ const Header = () => {
         <button className="hidden md:flex lg:flex p-2 text-lg hover:bg-slate-300 hover:rounded-full">
           <IoMdApps className="text-lg " />
         </button>
-
-        <Image
-          src="/images/demo.jpg"
-          alt="profile"
-          width={40}
-          height={40}
-          className="rounded-full cursor-pointer"
-        />
+        <div className="h-12 w-12 flex items-center">
+          <Image
+            src="/images/demo.jpg"
+            alt="profile"
+            width={40}
+            height={40}
+            className="rounded-full cursor-pointer w-full h-full"
+          />
+        </div>
       </div>
     </div>
   );
