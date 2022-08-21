@@ -12,7 +12,7 @@ const Header = () => {
           variant={"outlined"}
           color="gray"
           ripple={true}
-          className="p-3 text-lg shadow-none rounded-full"
+          className="p-3 text-lg shadow-none rounded-full border-none"
         >
           <AiOutlineMenu className="text-lg" />
         </Button>
@@ -34,7 +34,7 @@ const Header = () => {
           variant={"outlined"}
           color="gray"
           ripple={true}
-          className="hidden md:flex lg:flex p-2 text-2xl shadow-none rounded-full"
+          className="hidden md:flex lg:flex p-2 text-2xl shadow-none rounded-full border-none"
         >
           <IoMdApps />
         </Button>
