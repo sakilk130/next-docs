@@ -2,14 +2,20 @@ import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { MdDescription } from "react-icons/md";
 import { IoMdApps } from "react-icons/io";
 import Image from "next/image";
+import { Button } from "@material-tailwind/react";
 
 const Header = () => {
   return (
     <div className="sm:gap-2 md:gap-5 lg:gap-20 flex justify-between shadow-md p-3 bg-white">
       <div className="flex items-center">
-        <button className="p-3 hover:bg-slate-300 hover:rounded-full text-lg">
+        <Button
+          variant={"outlined"}
+          color="gray"
+          ripple={true}
+          className="p-3 text-lg shadow-none rounded-full"
+        >
           <AiOutlineMenu className="text-lg" />
-        </button>
+        </Button>
         <button className="flex gap-3 items-center">
           <MdDescription className="hidden md:flex lg:flex text-blue-500 text-3xl" />{" "}
           <span className="text-xl text-gray-500 pr-2">Docs</span>
@@ -24,16 +30,21 @@ const Header = () => {
         />
       </div>
       <div className="flex items-center pl-3">
-        <button className="hidden md:flex lg:flex p-2 text-lg hover:bg-slate-300 hover:rounded-full">
-          <IoMdApps className="text-lg " />
-        </button>
+        <Button
+          variant={"outlined"}
+          color="gray"
+          ripple={true}
+          className="hidden md:flex lg:flex p-2 text-2xl shadow-none rounded-full"
+        >
+          <IoMdApps />
+        </Button>
         <div className="h-12 w-12 flex items-center">
           <Image
             src="/images/demo.jpg"
             alt="profile"
             width={40}
             height={40}
-            className="rounded-full cursor-pointer w-full h-full"
+            className="items-center rounded-full cursor-pointer w-full h-full"
           />
         </div>
       </div>
