@@ -1,6 +1,5 @@
 import { AiFillFolder } from "react-icons/ai";
-import { MdDescription } from "react-icons/md";
-import { BiDotsVerticalRounded } from "react-icons/bi";
+import DocsListRow from "../docs-list-row";
 
 const DocsList = () => {
   return (
@@ -12,26 +11,9 @@ const DocsList = () => {
           <AiFillFolder className="text-3xl text-gray-600" />
         </div>
       </div>
-      <div className="flex justify-between items-center pt-3">
-        <div className="flex gap-2">
-          <MdDescription className="text-3xl text-blue-600" />
-          <h4 className="text-lg text-gray-700">Dummy Docs </h4>
-        </div>
-        <div className="flex gap-2">
-          <h4>22/22/2022</h4>
-          <BiDotsVerticalRounded className="text-3xl text-gray-600" />
-        </div>
-      </div>
-      <div className="flex justify-between items-center pt-3">
-        <div className="flex gap-2">
-          <MdDescription className="text-3xl text-blue-600" />
-          <h4 className="text-lg text-gray-700">Dummy Docs </h4>
-        </div>
-        <div className="flex gap-2">
-          <h4>22/22/2022</h4>
-          <BiDotsVerticalRounded className="text-3xl text-gray-600" />
-        </div>
-      </div>
+      <DocsListRow />
+      <DocsListRow />
+      <DocsListRow />
     </div>
   );
 };
