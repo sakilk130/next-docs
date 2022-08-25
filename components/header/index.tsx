@@ -1,7 +1,3 @@
-import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
-import { MdDescription } from "react-icons/md";
-import { IoMdApps } from "react-icons/io";
-import Image from "next/image";
 import {
   Button,
   Menu,
@@ -9,7 +5,11 @@ import {
   MenuItem,
   MenuList,
 } from "@material-tailwind/react";
-import { useSession } from "next-auth/client";
+import { signOut, useSession } from "next-auth/client";
+import Image from "next/image";
+import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
+import { IoMdApps } from "react-icons/io";
+import { MdDescription } from "react-icons/md";
 
 const Header = () => {
   const [session]: any = useSession();
@@ -48,13 +48,27 @@ const Header = () => {
           <IoMdApps />
         </Button>
         <div className="h-12 w-12 flex items-center">
-          <Image
-            src={session ? session?.user?.image : "/images/demo.jpg"}
-            alt="profile"
-            width={40}
-            height={40}
-            className="items-center rounded-full cursor-pointer w-full h-full"
-          />
+          <Menu>
+            <MenuHandler>
+              <button>
+                <Image
+                  src={session ? session?.user?.image : "/images/demo.jpg"}
+                  alt="profile"
+                  width={40}
+                  height={40}
+                  className="items-center rounded-full cursor-pointer w-full h-full"
+                />
+              </button>
+            </MenuHandler>
+            <MenuList>
+              <MenuItem
+                className="text-center text-gray-600 "
+                onClick={() => signOut()}
+              >
+                Logout
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </div>
       </div>
     </div>
