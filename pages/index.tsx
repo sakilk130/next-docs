@@ -1,10 +1,23 @@
 import type { NextPage } from "next";
+import { getSession } from "next-auth/client";
 import Head from "next/head";
 import DocsList from "../components/docs-list";
 import Header from "../components/header";
+import Login from "../components/login";
 import NewDocs from "../components/new-docs";
 
-const Home: NextPage = () => {
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context);
+  return {
+    props: {
+      session,
+    },
+  };
+}
+
+const Home: NextPage = ({ session }: any) => {
+  if (!session) return <Login />;
+
   return (
     <div>
       <Head>

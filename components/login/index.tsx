@@ -1,6 +1,6 @@
 import { Button } from "@material-tailwind/react";
-import Image from "next/image";
 import { signIn } from "next-auth/client";
+import Image from "next/image";
 
 const Login = () => {
   return (

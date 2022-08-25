@@ -2,9 +2,18 @@ import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { MdDescription } from "react-icons/md";
 import { IoMdApps } from "react-icons/io";
 import Image from "next/image";
-import { Button } from "@material-tailwind/react";
+import {
+  Button,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
+} from "@material-tailwind/react";
+import { useSession } from "next-auth/client";
 
 const Header = () => {
+  const [session]: any = useSession();
+
   return (
     <div className="sm:gap-2 md:gap-5 lg:gap-20 flex justify-between shadow-md p-3 bg-white">
       <div className="flex items-center">
@@ -40,7 +49,7 @@ const Header = () => {
         </Button>
         <div className="h-12 w-12 flex items-center">
           <Image
-            src="/images/demo.jpg"
+            src={session ? session?.user?.image : "/images/demo.jpg"}
             alt="profile"
             width={40}
             height={40}

@@ -4,7 +4,7 @@ import { MdDescription } from "react-icons/md";
 
 const DocsListRow = () => {
   return (
-    <div className="flex justify-between items-center pt-3 hover:bg-slate-300 hover:rounded-3xl hover:cursor-pointer p-2">
+    <div className="flex justify-between items-center pt-3 hover:bg-slate-300 hover:rounded-3xl hover:cursor-pointer p-2 hover:bg-blue-gray-100">
       <div className="flex gap-2">
         <MdDescription className="text-3xl text-blue-600" />
         <h4 className="text-lg text-gray-700">Dummy Docs </h4>
