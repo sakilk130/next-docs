@@ -1,8 +1,17 @@
 import { Button } from "@material-tailwind/react";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { CgArrowsV } from "react-icons/cg";
+import { useEffect, useState } from "react";
+import Modal from "../modal";
 
 const NewDocs = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
+
   return (
     <section className="bg-gray-300 p-5 ">
       <div className="max-w-3xl mx-auto items-center">
@@ -37,8 +46,11 @@ const NewDocs = () => {
             </Button>
           </div>
         </div>
-        <div className="">
+        <div>
           <img
+            onClick={() => {
+              setIsOpen(true);
+            }}
             src="https://ssl.gstatic.com/docs/templates/thumbnails/docs-blank-googlecolors.png"
             alt="create new docs"
             className="cursor-pointer border-white hover:border-blue-700 border-2 h-40 w-30"
@@ -46,6 +58,13 @@ const NewDocs = () => {
           />
         </div>
         <div>Blank</div>
+        {isOpen && (
+          <Modal
+            handleOpen={setIsOpen}
+            isOpen={isOpen}
+            size={width > 768 ? "sm" : width > 480 ? "xl" : "xl"}
+          />
+        )}
       </div>
     </section>
   );
