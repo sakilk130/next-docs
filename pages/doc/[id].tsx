@@ -1,10 +1,10 @@
-import { getSession, useSession } from "next-auth/client";
+import { getSession } from "next-auth/client";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
 import { useCollectionOnce } from "react-firebase-hooks/firestore";
 import DocHeader from "../../components/doc-header";
 import Login from "../../components/login";
+import TextEditor from "../../components/text-editor";
 import db from "../../db/firebase";
 
 const Doc = ({ session }: any) => {
@@ -28,6 +28,7 @@ const Doc = ({ session }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <DocHeader loading={loading} docTitle={snapshot?.data()?.fileName} />
+      <TextEditor />
     </div>
   );
 };
