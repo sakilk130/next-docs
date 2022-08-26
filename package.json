@@ -9,14 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.2.3",
+    "@next-auth/firebase-adapter": "^0.1.2",
+    "draft-js": "^0.11.7",
+    "firebase": "^8.7.1",
+    "lodash": "^4.17.21",
     "next": "12.2.5",
+    "next-auth": "^3.27.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-content-loader": "^6.2.0",
+    "react-dom": "18.2.0",
+    "react-draft-wysiwyg": "^1.15.0",
+    "react-firebase-hooks": "^3.0.4",
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.184",
     "@types/node": "18.7.8",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@types/react-draft-wysiwyg": "^1.13.4",
     "autoprefixer": "^10.4.8",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
