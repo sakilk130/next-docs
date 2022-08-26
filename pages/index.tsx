@@ -1,23 +1,19 @@
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
 import DocsList from "../components/docs-list";
 import Header from "../components/header";
 import Login from "../components/login";
 import NewDocs from "../components/new-docs";
-
-export async function getServerSideProps(context: any) {
-  const session = await getSession(context);
-  return {
-    props: {
-      session,
-    },
-  };
-}
+import db from "../db/firebase";
+import { useCollection } from "react-firebase-hooks/firestore";
+import ContentLoader from "../components/content-loader";
 
 const Home: NextPage = ({ session }: any) => {
   if (!session) return <Login />;
-
+  const [snapshot, loading, error]: any = useCollection<any>(
+    db.collection("userDocs").doc(session.user.email).collection("docs")
+  );
   return (
     <div>
       <Head>
@@ -27,9 +23,22 @@ const Home: NextPage = ({ session }: any) => {
       </Head>
       <Header />
       <NewDocs />
-      <DocsList />
+      {loading ? (
+        <ContentLoader className="p-3 md:p-0 lg:p-0 max-w-3xl mx-auto items-center" />
+      ) : (
+        <DocsList docs={snapshot?.docs} />
+      )}
     </div>
   );
 };
+
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context);
+  return {
+    props: {
+      session,
+    },
+  };
+}
 
 export default Home;

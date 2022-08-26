@@ -1,7 +1,9 @@
 import { AiFillFolder } from "react-icons/ai";
 import DocsListRow from "../docs-list-row";
-
-const DocsList = () => {
+interface IDocsList {
+  docs: any;
+}
+const DocsList = ({ docs }: IDocsList) => {
   return (
     <div className="p-3 md:p-0 lg:p-0 max-w-3xl mx-auto items-center">
       <div className="flex justify-between pt-5">
@@ -11,9 +13,17 @@ const DocsList = () => {
           <AiFillFolder className="text-3xl text-gray-600" />
         </div>
       </div>
-      <DocsListRow />
-      <DocsListRow />
-      <DocsListRow />
+      {docs.map((doc: any) => (
+        <DocsListRow
+          key={doc.id}
+          doc={{
+            id: doc.id,
+            ...doc.data(),
+            timestamp: doc.data().timestamp?.toDate()?.toDateString(),
+            lastUpdated: doc.data().lastUpdated?.toDate()?.toDateString(),
+          }}
+        />
+      ))}
     </div>
   );
 };
