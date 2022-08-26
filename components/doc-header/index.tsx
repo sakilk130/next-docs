@@ -12,8 +12,9 @@ import { MdDescription } from "react-icons/md";
 interface IDocHeader {
   docTitle: string;
   loading?: boolean;
+  isSaved?: string;
 }
-const DocHeader = ({ docTitle, loading = false }: IDocHeader) => {
+const DocHeader = ({ docTitle, loading = false, isSaved }: IDocHeader) => {
   const [session]: any = useSession();
 
   return (
@@ -21,9 +22,12 @@ const DocHeader = ({ docTitle, loading = false }: IDocHeader) => {
       <div className="flex items-center gap-2">
         <MdDescription className=" text-blue-500 text-3xl" />{" "}
         <div>
-          <h4 className="text-lg font-bold">
-            {loading ? "Loading..." : docTitle}
-          </h4>
+          <div className="flex items-center gap-2">
+            <h4 className="text-lg font-bold">
+              {loading ? "Loading..." : docTitle}
+            </h4>
+            <h4>{isSaved}</h4>
+          </div>
           <ul className=" gap-3 hidden md:flex lg:flex">
             <li className="docHeaderOption">
               <a href="#">File</a>
