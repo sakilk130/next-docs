@@ -9,8 +9,11 @@ import { signOut, useSession } from "next-auth/client";
 import Image from "next/image";
 import { BsPeopleFill } from "react-icons/bs";
 import { MdDescription } from "react-icons/md";
-
-const DocHeader = () => {
+interface IDocHeader {
+  docTitle: string;
+  loading?: boolean;
+}
+const DocHeader = ({ docTitle, loading = false }: IDocHeader) => {
   const [session]: any = useSession();
 
   return (
@@ -18,24 +21,26 @@ const DocHeader = () => {
       <div className="flex items-center gap-2">
         <MdDescription className=" text-blue-500 text-3xl" />{" "}
         <div>
-          <h4 className="text-lg font-bold">Doc Title</h4>
+          <h4 className="text-lg font-bold">
+            {loading ? "Loading..." : docTitle}
+          </h4>
           <ul className=" gap-3 hidden md:flex lg:flex">
-            <li className="hover:bg-gray-300 p-1 rounded-lg">
+            <li className="docHeaderOption">
               <a href="#">File</a>
             </li>
-            <li className="hover:bg-gray-300 p-1 rounded-lg">
+            <li className="docHeaderOption">
               <a href="#">Edit</a>
             </li>
-            <li className="hover:bg-gray-300 p-1 rounded-lg">
+            <li className="docHeaderOption">
               <a href="#">View</a>
             </li>
-            <li className="hover:bg-gray-300 p-1 rounded-lg">
+            <li className="docHeaderOption">
               <a href="#">Insert</a>
             </li>
-            <li className="hover:bg-gray-300 p-1 rounded-lg">
+            <li className="docHeaderOption">
               <a href="#">Format</a>
             </li>
-            <li className="hover:bg-gray-300 p-1 rounded-lg">
+            <li className="docHeaderOption">
               <a href="#">Tools</a>
             </li>
           </ul>
