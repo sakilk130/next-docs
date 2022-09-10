@@ -32,7 +32,7 @@ yarn dev
 
 ## Screenshot of the Web App
 
-![](public/static/images/next-docs.gif)
+![](public/images/next-docs.gif)
 
 ## Built with
 
